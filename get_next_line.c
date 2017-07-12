@@ -6,7 +6,7 @@
 /*   By: svigouro <svigouro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 10:37:12 by svigouro          #+#    #+#             */
-/*   Updated: 2017/07/04 11:34:41 by svigouro         ###   ########.fr       */
+/*   Updated: 2017/07/12 23:45:09 by svigouro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "./libft/includes/libft.h"
 #include "get_next_line.h"
 
-int		ft_realloc_save(char **save)
+int		ft_realloc_rest(char **save)
 {
 	char	*swap;
 
@@ -25,6 +25,35 @@ int		ft_realloc_save(char **save)
 	if (!(*save = ft_strnew(ft_strlen(swap) + BUFF_SIZE)))
 		return (0);
 	ft_strcpy(*save, swap);
+	return (1);
+}
+
+int		ft_write_line(int j, char **save, char **line)
+{
+	int		i;
+	int		y;
+
+	i = 0;
+	y = 0;
+	if (j != 0 || ft_strlen(*save) != 0)
+	{
+		while (*save[i] != '\n')
+		{
+			*line[i] = *save[i];
+			i++;
+		}
+		*line[i++] = '\0';
+		if (*save[0] == '\n')
+		{
+			while (*save[i])
+				*save[y++] = *save[i++];
+			*save[y] = '\0';
+			return (0);
+		}
+		while (*save[i])
+			*save[y++] = *save[i++];
+		*save[y] = '\0';
+	}
 	return (1);
 }
 
@@ -39,9 +68,9 @@ int		get_next_line(const int fd, char **line)
 		return (-1);
 	while ((i = read(fd, *line, BUFF_SIZE)) > 0)
 	{
-		if (!(ft_realloc_save(&save)))
+		if (!(ft_realloc_rest(&rest)))
 			return (-1);
-		ft_strncat(save, *line, BUFF_SIZE);
+		ft_strncat(rest, *line, BUFF_SIZE);
 		if (ft_memchr(*line, '\n', BUFF_SIZE))
 			break ;
 	}
