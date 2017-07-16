@@ -3,13 +3,10 @@
 #include "get_next_line.h"
 #include <stdlib.h>
 
-int		main()
+int		main(void)
 {
 	int		fd;
-	char	**line = NULL;
-
-	*line = (char *)malloc(sizeof (*line) * 4096);
-	line = (char **)malloc(sizeof (line) * 4096);
+	char	**line;
 
 	fd = open("./test", O_RDWR);
 	get_next_line(fd, line);
