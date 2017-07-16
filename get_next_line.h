@@ -6,7 +6,7 @@
 /*   By: svigouro <svigouro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/04 19:47:12 by svigouro          #+#    #+#             */
-/*   Updated: 2017/07/16 01:28:43 by svigouro         ###   ########.fr       */
+/*   Updated: 2017/07/16 12:28:46 by svigouro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define GET_NEXT_LINE_H
 
 # define BUFF_SIZE 32
-
 
 typedef struct	s_data
 {
@@ -25,4 +24,5 @@ typedef struct	s_data
 }				t_data;
 
 int				get_next_line(const int fd, char **line);
+
 #endif
