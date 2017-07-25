@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svigouro <svigouro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: svigouro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/04 19:47:12 by svigouro          #+#    #+#             */
-/*   Updated: 2017/07/16 12:28:46 by svigouro         ###   ########.fr       */
+/*   Created: 2017/07/24 18:29:30 by svigouro          #+#    #+#             */
+/*   Updated: 2017/07/24 18:29:31 by svigouro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 typedef struct	s_data
 {
 	const int		fd;
-	int				index;
 	char			*save;
 	struct s_data	*nxt;
 }				t_data;
