@@ -15,15 +15,22 @@
 #include "get_next_line.h"
 #include <stdlib.h>
 #include <unistd.h>
+#include "libft/includes/libft.h"
 
 int		main(void)
 {
 	int		fd;
 	char	*line;
+	int		ret;
 
 	fd = open("./test", O_RDWR);
-	get_next_line(fd, &line);
-	printf("%s\n", line);
+	while((ret = get_next_line(fd, &line)))
+	{
+		ft_putstr(line);
+		ft_putchar('\n');
+		ft_putnbr(ret);
+		ft_putchar('\n');
+	}
 	close(fd);
 	return (0);
 }

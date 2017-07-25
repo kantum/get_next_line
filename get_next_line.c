@@ -21,6 +21,7 @@ int		get_next_line(const int fd, char **line)
 	char			*buff;
 	int				read_check;
 	char			*tmp_line;
+	int				i;
 
 	if (!line || fd < 0)
 		return (-1);
@@ -29,16 +30,41 @@ int		get_next_line(const int fd, char **line)
 	if (!(data = (t_data *)malloc(sizeof(data))))
 		return (-1);
 	ft_bzero(buff, BUFF_SIZE + 1);
+	*line = ft_strnew(0);
+	if (!(tmp_line = (char *)malloc(sizeof(char *) * BUFF_SIZE + 1)))
+		return (-1);
+	if (data->save)
+		*line = ft_strdup(data->save);
+	else
+		if (!(data->save = (char *)malloc(sizeof(char) * BUFF_SIZE + 1)))
+			return (-1);
+	ft_bzero(data->save, BUFF_SIZE + 1);
 	while ((read_check = read(fd, buff, BUFF_SIZE)) != 0)	
 	{
+		i = 0;
 		if ((data->save = ft_memchr(buff, '\n', BUFF_SIZE)))
 		{
-			if (!(tmp_line = (char *)malloc(sizeof(char *) * BUFF_SIZE + 1)))
-				return (-1);
-			while (*buff != '\n')
+			while (buff[i] != '\n')
 			{
+				tmp_line[i] = buff[i];
+				i++;
 			}
+			tmp_line[i] = '\0';
+			*line = ft_strjoin(*line, tmp_line); 
+			return (1);
 		}
+		while (buff[i])
+		{
+			tmp_line[i] = buff[i];
+			i++;
+		}
+		tmp_line[i] = '\0';
+		*line = ft_strjoin(*line, tmp_line);
+		ft_bzero(buff, BUFF_SIZE + 1);
 	}
+	if (read_check == 0)
+		free(data);
+	free(tmp_line);
+	free(buff);
 	return (0);
 }

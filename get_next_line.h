@@ -17,7 +17,7 @@
 
 typedef struct	s_data
 {
-	const int		fd;
+	int				fd;
 	char			*save;
 	struct s_data	*nxt;
 }				t_data;
