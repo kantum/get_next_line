@@ -25,11 +25,14 @@ int		get_next_line(const int fd, char **line)
 
 	if (!line || fd < 0)
 		return (-1);
-	if (!(buff = (char *)malloc(sizeof(buff) * BUFF_SIZE + 1)))
-		return (-1);
 	if (!data)
+	{
 		if (!(data = (t_data *)malloc(sizeof(t_data))))
 			return (-1);
+		data->save = NULL;
+	}
+	if (!(buff = (char *)malloc(sizeof(buff) * BUFF_SIZE + 1)))
+		return (-1);
 	ft_bzero(buff, BUFF_SIZE + 1);
 	*line = ft_strnew(0);
 	if (!(tmp_line = (char *)malloc(sizeof(char *) * BUFF_SIZE + 1)))
