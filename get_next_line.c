@@ -56,8 +56,6 @@ int		get_next_line(const int fd, char **line)
 			tmp_line[i] = '\0';
 			*line = ft_strjoin(*line, tmp_line); 
 			ft_bzero(tmp_line, BUFF_SIZE + 1);
-		//	free(tmp_line);
-		//	free(buff);
 			return (1);
 		}
 		while (buff[i])

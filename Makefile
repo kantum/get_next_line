@@ -27,7 +27,7 @@ $(NAME): $(LIB) $(OBJ)
 	@gcc $(FLAGS) $(OBJ) $(LFLAGS) -o $(NAME)
 
 $(OBJ):
-	@gcc $(FLAGS) -c $(SRC) -I libft
+	@gcc $(FLAGS) -c $(SRC) -I libft/includes
 
 clean:
 	@rm -rf $(OBJ)

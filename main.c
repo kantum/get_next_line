@@ -18,7 +18,7 @@
 #include <string.h>
 #include <stdio.h>
 #include "get_next_line.h"
-#include "libft.h"
+#include "libft/includes/libft.h"
 
 int		main(int argc, char **argv)
 {
@@ -32,7 +32,7 @@ int		main(int argc, char **argv)
 	tmp = NULL;
 	if (argc == 1)
 	{
-		while (!(ft_strcmp(tmp, "exit")))
+		while (1)
 		{
 			get_next_line(fd[0], &tmp);
 			ft_putendl(tmp);
@@ -46,10 +46,11 @@ int		main(int argc, char **argv)
 		{
 			ft_putstr(tmp);
 			ft_putstr("\n");
-			//ft_putnbr(ret);
-			//ft_putstr("\n");
+			ft_putnbr(ret);
+			ft_putstr("\n");
 		}
-		//ret = get_next_line(fd[0], &tmp);
+		ret = get_next_line(fd[0], &tmp);
+		ft_putnbr(ret);
 		return (0);
 	}
 	else if (argc > 2)
