@@ -23,8 +23,8 @@ int		main(void)
 	char	*line;
 	int		ret;
 
-	fd = open("./test", O_RDWR);
-	while((ret = get_next_line(fd, &line)))
+	fd = open("./test2", O_RDWR);
+	while((ret = get_next_line(fd, &line)) >= 0)
 	{
 		ft_putstr(line);
 		ft_putchar('\n');
