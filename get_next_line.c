@@ -15,7 +15,16 @@ int		ft_read(int fd, t_list buf, char **line)
 	rd[BUFF_SIZE] = '\0';
 	ptr = NULL;
 	if (buf.content)
+	{
 		ptr = ft_strchr(buf.content, '\n');
+		if (ptr)
+		{
+			*ptr = '\0';
+			*line = ft_strsub(*line, 0, (ptr - (char *)buf.content));
+		}
+		else 
+			*line = ft_strjoin(*line, (char *)buf.content);
+	}
 	while (!ptr && (ret = read(fd, rd, BUFF_SIZE)) > 0)
 	{
 		buf.content = ft_strjoin(buf.content, rd);
@@ -27,20 +36,16 @@ int		ft_read(int fd, t_list buf, char **line)
 		*line = ft_strsub(buf.content, 0, (ptr - (char *)buf.content));
 		if (ptr + 1)
 			buf.content = ft_strdup(ptr + 1);
-		else
-			free(buf.content);
 		return (1);
 	}
 	*line = ft_strdup(buf.content); //malloc de line 
-	free(buf.content);
-	buf.content= NULL;
 	return(0);
 }
 
 int		get_next_line(const int fd, char **line)
 {
-	static t_list		buf[FD_MAX];
-	int					ret;
+	static char	**buf[FD_MAX];
+	int			ret;
 
 	if (fd < 0 || fd > FD_MAX)
 		return (-1);

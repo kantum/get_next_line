@@ -16,7 +16,7 @@ FLAGS = -Wall -Werror -Wextra -g
 
 LFLAGS = -Llibft -lft
 
-SRC = main.c new.c
+SRC = main.c get_next_line.c 
 
 OBJ = $(SRC:.c=.o)
 
@@ -24,10 +24,10 @@ all: $(NAME)
 
 $(NAME): $(LIB) $(OBJ)
 	@make -C libft
-	@gcc $(FLAGS) $(OBJ) $(LFLAGS) -o $(NAME)
+	@gcc $(FLAGS) $(OBJ) $(LFLAGS) -o $(NAME) -g
 
 $(OBJ):
-	@gcc $(FLAGS) -c $(SRC) -I libft/includes
+	@gcc $(FLAGS) -c $(SRC) -I libft/includes -g
 
 clean:
 	@rm -rf $(OBJ)
