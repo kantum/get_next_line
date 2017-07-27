@@ -14,9 +14,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <stdio.h>
 #include <string.h>
-#include <stdio.h>
 #include "get_next_line.h"
 #include "libft/includes/libft.h"
 
