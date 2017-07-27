@@ -14,13 +14,14 @@
 # define GET_NEXT_LINE_H
 
 # define BUFF_SIZE 32
+# define FD_MAX 10240
 
-typedef struct	s_data
-{
-	int				fd;
-	char			*save;
-	struct s_data	*nxt;
-}				t_data;
+//typedef struct	s_data
+//{
+//	int				fd;
+//	char			*save;
+//	struct s_data	*nxt;
+//}				t_data;
 
 int				get_next_line(const int fd, char **line);
 

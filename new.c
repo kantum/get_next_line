@@ -1,3 +1,11 @@
+#include <unistd.h>
+#include "get_next_line.h"
+#include "libft/includes/libft.h"
+
+/** 
+ * fill_line
+ **/
+
 int		ft_read(int fd, t_list buf, char **line)
 {
 	int		ret;
@@ -39,13 +47,10 @@ int		get_next_line(const int fd, char **line)
 	static t_list		buf[FD_MAX];
 	int					ret;
 
-	if (fd > FD_MAX)
+	if (fd < 0 || fd > FD_MAX)
 		return (-1);
 	if (!(buf[fd].content))
-	{
-		buf[fd] = *ft_lstnew(NULL, 0);
-		buf[fd].content = ft_strnew(0);
-	}
+		buf[fd] = *ft_lstnew((char *)NULL, BUFF_SIZE); //malloc buf[].content
 	ret = ft_read(fd, buf[fd], line);
 	if (fd < 0 || ret < 0)
 		return (-1);
