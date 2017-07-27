@@ -44,7 +44,7 @@ int		get_next_line(const int fd, char **line)
 		if (!(data->save = (char *)malloc(sizeof(data->save) * BUFF_SIZE + 1)))
 			return (-1);
 	ft_bzero(data->save, BUFF_SIZE + 1);
-	while ((read_check = read(fd, buff, BUFF_SIZE)) > 0)	
+	while ((read_check = read(fd, buff, BUFF_SIZE)) > 0)
 	{
 		i = 0;
 		if ((data->save = ft_memchr(buff, '\n', BUFF_SIZE)))
@@ -55,7 +55,7 @@ int		get_next_line(const int fd, char **line)
 				i++;
 			}
 			tmp_line[i] = '\0';
-			*line = ft_strjoin(*line, tmp_line); 
+			*line = ft_strjoin(*line, tmp_line);
 			ft_bzero(tmp_line, BUFF_SIZE + 1);
 			free(tmp_line);
 			free(buff);

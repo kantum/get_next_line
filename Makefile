@@ -10,13 +10,13 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = get_next_line_test
+NAME = gnl_test
 
 FLAGS = -Wall -Werror -Wextra -g
 
 LFLAGS = -Llibft -lft
 
-SRC = main.c get_next_line.c
+SRC = main.c new.c
 
 OBJ = $(SRC:.c=.o)
 
