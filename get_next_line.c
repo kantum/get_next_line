@@ -13,12 +13,6 @@
 #include "get_next_line.h"
 #include "libft/includes/libft.h"
 
-/*
-** Search for the file descriptor in the lst
-** Create it if doesn't exist
-** Add a new node if fd haven't been found in the lst
-*/
-
 static t_list	*ft_node(t_list **lst, int fd)
 {
 	t_list	*node;
@@ -36,10 +30,6 @@ static t_list	*ft_node(t_list **lst, int fd)
 	ft_lstadd(lst, node);
 	return (node);
 }
-
-/*
-** Read and join buf until it finds a '\n' or read returns 0
-*/
 
 char			*ft_read(char **buf, int fd, char *str)
 {
@@ -59,11 +49,6 @@ char			*ft_read(char **buf, int fd, char *str)
 	}
 	return (0);
 }
-
-/*
-** This function verify if conditions are ok, set the pointer to '\n'
-** call ft_read or split the buffer if necessary
-*/
 
 int				get_next_line(const int fd, char **line)
 {
